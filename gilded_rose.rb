@@ -22,29 +22,33 @@ def update_aged_brie_quality(aged_brie_item)
   end
 end
 
+def update_backstage_passes_quality(backstage_passes_item)
+  if backstage_passes_item.sell_in < 0
+    backstage_passes_item.quality = 0
+    return
+  end
+  if backstage_passes_item.quality < 50
+    backstage_passes_item.quality += 1
+    if backstage_passes_item.sell_in < 10
+      if backstage_passes_item.quality < 50
+        backstage_passes_item.quality += 1
+      end
+    end
+    if backstage_passes_item.sell_in < 5
+      if backstage_passes_item.quality < 50
+        backstage_passes_item.quality += 1
+      end
+    end
+  end
+end
+
 def update_item_quality(item)
   if item.name == "Aged Brie"
     update_aged_brie_quality(item)
     return
   end
   if item.name == "Backstage passes to a TAFKAL80ETC concert"
-    if item.sell_in < 0
-      item.quality = 0
-      return
-    end
-    if item.quality < 50
-      item.quality += 1
-      if item.sell_in < 10
-        if item.quality < 50
-          item.quality += 1
-        end
-      end
-      if item.sell_in < 5
-        if item.quality < 50
-          item.quality += 1
-        end
-      end
-    end
+    update_backstage_passes_quality(item)
     return
   end
   if item.name == "NORMAL ITEM"
