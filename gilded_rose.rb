@@ -42,6 +42,17 @@ def update_backstage_passes_quality(backstage_passes_item)
   end
 end
 
+def update_normal_item_quality(normal_item)
+  if normal_item.sell_in < 0
+    if normal_item.quality > 0
+      normal_item.quality -= 1
+    end
+  end
+  if normal_item.quality > 0
+    normal_item.quality -= 1
+  end
+end
+
 def update_item_quality(item)
   if item.name == "Aged Brie"
     update_aged_brie_quality(item)
@@ -52,12 +63,7 @@ def update_item_quality(item)
     return
   end
   if item.name == "NORMAL ITEM"
-    if item.sell_in < 0
-      item.quality -= 1
-    end
-    if item.quality > 0
-      item.quality -= 1
-    end
+    update_normal_item_quality(item)
   end
 end
 
