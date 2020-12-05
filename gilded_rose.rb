@@ -11,16 +11,20 @@ def update_item_sell_in(item)
   end
 end
 
+def update_aged_brie_quality(aged_brie_item)
+  if aged_brie_item.sell_in < 0
+    if aged_brie_item.quality < 50
+      aged_brie_item.quality += 1
+    end
+  end
+  if aged_brie_item.quality < 50
+    aged_brie_item.quality += 1
+  end
+end
+
 def update_item_quality(item)
   if item.name == "Aged Brie"
-    if item.sell_in < 0
-      if item.quality < 50
-        item.quality += 1
-      end
-    end
-    if item.quality < 50
-      item.quality += 1
-    end
+    update_aged_brie_quality(item)
     return
   end
   if item.name == "Backstage passes to a TAFKAL80ETC concert"
