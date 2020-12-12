@@ -1,5 +1,6 @@
 require 'rspec/given'
 require 'gilded_rose'
+require 'item'
 
 describe "#update_quality" do
 
