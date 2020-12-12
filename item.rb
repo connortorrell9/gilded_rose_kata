@@ -18,17 +18,6 @@ class Item
         end
       end
       
-      def update_aged_brie_quality
-        if @sell_in < 0
-          if @quality < 50
-            @quality += 1
-          end
-        end
-        if @quality < 50
-          @quality += 1
-        end
-      end
-      
       def update_backstage_passes_quality
         if @sell_in < 0
           @quality = 0
@@ -61,10 +50,6 @@ class Item
       end
       
       def update_item_quality
-        if @name == "Aged Brie"
-          update_aged_brie_quality
-          return
-        end
         if @name == "Backstage passes to a TAFKAL80ETC concert"
           update_backstage_passes_quality
           return

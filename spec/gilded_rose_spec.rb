@@ -1,6 +1,7 @@
 require 'rspec/given'
 require 'gilded_rose'
 require 'item'
+require 'aged_brie'
 
 describe "#update_quality" do
 
@@ -38,6 +39,7 @@ describe "#update_quality" do
 
     context "Aged Brie" do
       Given(:name) { "Aged Brie" }
+      Given(:item) { AgedBrie.new(name, initial_sell_in, initial_quality) }
 
       Invariant { item.sell_in.should == initial_sell_in-1 }
 
@@ -203,7 +205,7 @@ describe "#update_quality" do
     Given(:items) {
       [
         Item.new("NORMAL ITEM", 5, 10),
-        Item.new("Aged Brie", 3, 10),
+        AgedBrie.new("Aged Brie", 3, 10),
       ]
     }
 
