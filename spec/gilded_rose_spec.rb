@@ -2,6 +2,7 @@ require 'rspec/given'
 require 'gilded_rose'
 require 'item'
 require 'aged_brie'
+require 'backstage_passes'
 
 describe "#update_quality" do
 
@@ -101,6 +102,7 @@ describe "#update_quality" do
 
     context "Backstage pass" do
       Given(:name) { "Backstage passes to a TAFKAL80ETC concert" }
+      Given(:item) { BackstagePasses.new(name, initial_sell_in, initial_quality) }
 
       Invariant { item.sell_in.should == initial_sell_in-1 }
 

@@ -18,26 +18,6 @@ class Item
         end
       end
       
-      def update_backstage_passes_quality
-        if @sell_in < 0
-          @quality = 0
-          return
-        end
-        if @quality < 50
-          @quality += 1
-          if @sell_in < 10
-            if @quality < 50
-              @quality += 1
-            end
-          end
-          if @sell_in < 5
-            if @quality < 50
-              @quality += 1
-            end
-          end
-        end
-      end
-      
       def update_normal_item_quality
         if @sell_in < 0
           if @quality > 0
@@ -50,10 +30,6 @@ class Item
       end
       
       def update_item_quality
-        if @name == "Backstage passes to a TAFKAL80ETC concert"
-          update_backstage_passes_quality
-          return
-        end
         if @name == "NORMAL ITEM"
           update_normal_item_quality
         end
