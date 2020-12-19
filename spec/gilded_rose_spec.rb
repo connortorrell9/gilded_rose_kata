@@ -3,6 +3,7 @@ require 'gilded_rose'
 require 'item'
 require 'aged_brie'
 require 'backstage_passes'
+require 'normal_item'
 
 describe "#update_quality" do
 
@@ -15,6 +16,7 @@ describe "#update_quality" do
 
     context "normal item" do
       Given(:name) { "NORMAL ITEM" }
+      Given(:item) { NormalItem.new(name, initial_sell_in, initial_quality) }
 
       Invariant { item.sell_in.should == initial_sell_in-1 }
 
@@ -206,7 +208,7 @@ describe "#update_quality" do
   context "with several objects" do
     Given(:items) {
       [
-        Item.new("NORMAL ITEM", 5, 10),
+        NormalItem.new("NORMAL ITEM", 5, 10),
         AgedBrie.new("Aged Brie", 3, 10),
       ]
     }
