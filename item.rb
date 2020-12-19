@@ -7,4 +7,7 @@ class Item
         @sell_in = sell_in
         @quality = quality
     end
+
+    def update
+    end
 end
