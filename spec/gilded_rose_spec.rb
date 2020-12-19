@@ -4,6 +4,7 @@ require 'item'
 require 'aged_brie'
 require 'backstage_passes'
 require 'normal_item'
+require 'sulfuras'
 
 describe "#update_quality" do
 
@@ -84,6 +85,7 @@ describe "#update_quality" do
     context "Sulfuras" do
       Given(:initial_quality) { 80 }
       Given(:name) { "Sulfuras, Hand of Ragnaros" }
+      Given(:item) { Sulfuras.new(name, initial_sell_in, initial_quality) }
 
       Invariant { item.sell_in.should == initial_sell_in }
 
